@@ -70,14 +70,14 @@ int main(int argc , char *argv[])
 				printf("Sending Failed \n");
 				return 1;
 			}
-			sendIt(SID);
+
 		//Server Reply
 		//
 
 			if(recv(SID,sMessage,500,0)<0)
 			{
-			printf("IO Error \n");
-			break;
+				printf("IO Error \n");
+				break;
 			}
 
 			printf("\nServer sent: ");	

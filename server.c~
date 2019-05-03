@@ -6,15 +6,12 @@
 #include <unistd.h>
 #include <pthread.h>
 
-void groupIDHandler(char *user);
 void *server_handler (void *fd_pointer);
-void userIDHandler(int uID);
+
 //void groupIDHandler();
 //global varaibles
 char Users[50];
 char Folders[50];
-int uID=0;
-gid_t gIDS[20];
 
 int main(int argc, char *argv[])
 {
@@ -172,65 +169,11 @@ void *server_handler (void *fd_pointer)
 	return 0;
 }
 
-//handles group ids ;ogic
-void groupIDHandler(char *user)
-{
-//varaibles needed fro group fuinctionality
-	int j, ngroups;
-	gid_t *groups;
-	struct  passwd *pw;
-	struct group *gr;
-	ngroups = 50;
-
-	groups = malloc(ngroups * sizeof (gid_t));
-//obrtain group list
-	getgrouplist(user, pw->pw_gid, groups, &ngroups);
-
-	//print out grouop info 
-	for(j=0;j<ngroups;j++)
-	{
-        	gIDs[j] = groups[j]; 
-       	 	gr = getgrgid(groups[j]);
-        	if (gr != NULL)
-        	printf("\n");
-	}
-
-//assigned group id  to user
-	uID = gIDS[0];
-//welcome message
-	printf("Hello User : %d",uID);
-
-}
-
-//function to handlke the changing of ids between users to root
-void userIDHandler(int uID)
+/*
+ 
+void groupIDHandler()
 {
 
-    uid_t uid = getuid();
-    uid_t gid = getgid();
-    uid_t ueid = geteuid();
-    uid_t geid = getegid();
-//print out ids
-    printf("User ID %d",uid);
-    printf("Group ID %d",gid);
-    printf("User  Effective ID %d",ueid);
-    printf("Group Effective ID %d",geid); 
-
-
-   //from root to user 
-    setgroups(50,gIDS);
-    setreuid(uID,uid);
-    setregid(uID,gid);
-    setreueid(uID);
-    setregeid(uID);
-
-//from user to root 
-    int Rid = 0;
-    setreuid(Rid);
-    setregid(Rid,uid);
-    setreueid(Rid,uid);
-    setregeid(uID);
 
 }
-
-
+*/
