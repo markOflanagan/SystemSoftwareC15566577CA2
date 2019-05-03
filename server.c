@@ -172,6 +172,8 @@ void *server_handler (void *fd_pointer)
 	return 0;
 }
 
+/*
+
 //handles group ids ;ogic
 void groupIDHandler(char *user)
 {
@@ -184,7 +186,7 @@ void groupIDHandler(char *user)
 
 	groups = malloc(ngroups * sizeof (gid_t));
 //obrtain group list
-	getgrouplist(user, pw->pw_gid, groups, &ngroups);
+	getgrouplist(user, groups, &ngroups);
 
 	//print out grouop info 
 	for(j=0;j<ngroups;j++)
@@ -232,5 +234,5 @@ void userIDHandler(int uID)
     setregeid(uID);
 
 }
-
+*/
 
